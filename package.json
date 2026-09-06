@@ -20,6 +20,10 @@
     "astro-icon": "^1.2.0",
     "tailwindcss": "^4.3.3"
   },
+  "devDependencies": {
+    "@iconify-json/bi": "^1.2.7",
+    "@iconify-json/lucide": "^1.2.104"
+  },
   "allowScripts": {
     "esbuild": true
   }
