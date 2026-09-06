@@ -15,6 +15,4 @@ npm install
 npm run dev
 ```
 
-```
 Open `http://localhost:4321` to view it locally.
-```
