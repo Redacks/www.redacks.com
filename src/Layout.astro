@@ -1,0 +1,51 @@
+---
+import "./styles/global.css";
+import Footer from "./components/Footer.astro";
+
+export interface Props {
+    lang?: string;
+    title: string;
+    description: string;
+    keywords?: string[];
+}
+
+const { lang = "en", title, description, keywords = [] } = Astro.props;
+
+const canonical = Astro.url.toString();
+---
+
+<html lang={lang}>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta name="keywords" content={keywords.join(", ")} />
+        <link rel="canonical" href={canonical} />
+        <meta name="robots" content="index, follow" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonical} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={canonical} />
+        <meta property="twitter:title" content={title} />
+        <meta property="twitter:description" content={description} />
+
+        <meta name="theme-color" content="#131313" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    </head>
+    <body
+        class="bg-background text-on-background font-sans antialiased scheme-dark"
+    >
+        <main class="min-h-dvh flex flex-col">
+            <div class="grow">
+                <slot />
+            </div>
+            <Footer />
+        </main>
+    </body>
+</html>

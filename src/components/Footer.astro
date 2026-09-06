@@ -1,0 +1,75 @@
+---
+import { Icon } from "astro-icon/components";
+
+const siteInfo = { name: "Redacks" };
+const footer = {
+    links: [{ label: "Privacy Policy", href: "/privacy" }],
+    socials: [
+        {
+            label: "GitHub",
+            href: "https://github.com/Redacks",
+            icon: "lucide:github",
+        },
+
+        {
+            label: "LinkedIn",
+            href: "https://www.linkedin.com/in/niklas-ahlers-a183a3318/",
+            icon: "lucide:linkedin",
+        },
+        {
+            label: "Twitter/X",
+            href: "https://x.com/@com_redacks",
+            icon: "bi:twitter-x",
+        },
+        {
+            label: "Instagram",
+            href: "https://www.instagram.com/com.redacks/",
+            icon: "lucide:instagram",
+        },
+        {
+            label: "Discord",
+            href: "https://discord.gg/4HdPR3Y96N",
+            icon: "bi:discord",
+        },
+    ],
+};
+---
+
+<footer class="w-full border-t border-white/5 bg-black py-16">
+    <div
+        class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-6 md:flex-row md:px-12"
+    >
+        <div
+            class="font-label-caps text-xs uppercase tracking-widest text-white/40"
+        >
+            © {new Date().getFullYear()}
+            {" "}
+            {siteInfo.name}
+        </div>
+        <div class="flex gap-12">
+            {
+                footer.links.map((link) => (
+                    <a
+                        class="font-label-caps text-xs uppercase tracking-widest text-white/40 transition-colors hover:text-white"
+                        href={link.href}
+                    >
+                        {link.label}
+                    </a>
+                ))
+            }
+        </div>
+        <div class="flex gap-6">
+            {
+                footer.socials.map((social) => (
+                    <a
+                        class="text-white/40 transition-colors hover:text-white"
+                        href={social.href}
+                        aria-label={social.label}
+                    >
+                        <Icon name={social.icon} class="h-5 w-5" />
+                    </a>
+                ))
+            }
+        </div>
+    </div>
+</footer>
