@@ -1,6 +1,6 @@
-# www.redacks.com
+# https://www.redacks.com
 
-Source code for [redacks.com](https://www.redacks.com) my personal website for my projects and blog.
+Source code for [www.redacks.com](https://www.redacks.com) my personal website for my projects and blog.
 
 ## Stack
 
