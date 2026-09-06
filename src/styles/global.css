@@ -1,1 +1,16 @@
+@import "@fontsource-variable/inter/wght.css";
+@import "@fontsource-variable/space-grotesk/wght.css";
 @import "tailwindcss";
+
+@theme {
+    --font-sans:
+        "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-label-caps: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+    --font-h1: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+    --font-h2: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+    --font-h3: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+
+    --color-on-background: #e5e2e1;
+    --color-background: #050505;
+    --color-primary: #ff003c;
+}
