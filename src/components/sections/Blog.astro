@@ -1,0 +1,22 @@
+---
+import SectionTitle from "../SectionTitle.astro";
+import Button from "../Button.astro";
+import BlogGrid from "../blog/BlogPostGrid.astro";
+
+const data = {
+    heading: "Blog",
+    cta: { label: "See All Posts", href: "/blog" },
+};
+---
+
+<section class="mx-auto max-w-300 px-8 py-32" id="BLOG">
+    <SectionTitle heading={data.heading} />
+    <div class="space-y-10">
+        <BlogGrid showOnlyFeatured />
+        <div class="flex justify-center">
+            <Button href={data.cta.href} variant="secondary">
+                {data.cta.label}
+            </Button>
+        </div>
+    </div>
+</section>

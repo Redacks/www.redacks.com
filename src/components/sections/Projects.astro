@@ -1,0 +1,22 @@
+---
+import SectionTitle from "../SectionTitle.astro";
+import Button from "../Button.astro";
+import ProjectsGrid from "../projects/ProjectGrid.astro";
+
+const data = {
+    heading: "Projects",
+    cta: { label: "See All Projects", href: "/projects" },
+};
+---
+
+<section class="mx-auto max-w-300 px-8 py-32" id="PROJECTS">
+    <SectionTitle heading={data.heading} />
+    <div class="space-y-10">
+        <ProjectsGrid showOnlyFeatured />
+        <div class="flex justify-center">
+            <Button href={data.cta.href} variant="secondary">
+                {data.cta.label}
+            </Button>
+        </div>
+    </div>
+</section>

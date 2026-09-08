@@ -1,0 +1,36 @@
+---
+import Layout from "../../Layout.astro";
+import ProjectsGrid from "../../components/projects/ProjectGrid.astro";
+import SectionTitle from "../../components/SectionTitle.astro";
+import Button from "../../components/Button.astro";
+import { Icon } from "astro-icon/components";
+
+const data = {
+    heading: "Projects",
+    backLink: { label: "Back To Home", href: "/" },
+};
+---
+
+<Layout
+    title="Redacks | Projects"
+    description="An overview of all my projects, showcasing my work and the technologies I use."
+    keywords={[
+        "redacks",
+        "niklas",
+        "ahlers",
+        "student",
+        "software",
+        "projects",
+    ]}
+>
+    <div class="mx-auto max-w-300 px-8 md:py-32 py-8">
+        <div class="mb-10 flex items-center gap-4">
+            <Button href={data.backLink.href} variant="secondary">
+                <Icon name="lucide:arrow-left" class="h-4 w-4" />
+                {data.backLink.label}
+            </Button>
+        </div>
+        <SectionTitle heading={data.heading} />
+        <ProjectsGrid showOnlyFeatured />
+    </div>
+</Layout>

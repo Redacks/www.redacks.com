@@ -1,0 +1,51 @@
+---
+import Layout from "../../Layout.astro";
+import SectionTitle from "../../components/SectionTitle.astro";
+import { Icon } from "astro-icon/components";
+import { getCollection } from "astro:content";
+
+const { slug } = Astro.params;
+
+export async function getStaticPaths() {
+    const blogPosts = await getCollection("blog");
+    return blogPosts.map((blogPost) => ({ params: { slug: blogPost.id } }));
+}
+
+const blogPost = await getCollection("blog").then((blogPosts) =>
+    blogPosts.find((bp) => bp.id === slug),
+);
+if (!blogPost) {
+    return Astro.redirect("/blog");
+}
+---
+
+<Layout
+    title={`Redacks | ${blogPost.data.title}`}
+    description={`${blogPost.data.description}`}
+>
+    <div class="mx-auto max-w-300 px-8 md:py-32 py-8">
+        <div class="mb-6 flex items-center gap-4">
+            <button
+                type="button"
+                class="inline-flex items-center gap-4 px-8 py-5 font-label-caps text-xs tracking-widest transition-all duration-300 border border-white/10 bg-transparent text-white hover:bg-white/5"
+                onclick="if (window.history.length > 1) history.back(); else window.location.href = '/blog';"
+            >
+                <Icon name="lucide:arrow-left" class="h-4 w-4" />
+                Back
+            </button>
+        </div>
+
+        <SectionTitle heading={blogPost.data.title} />
+
+        <p class="text-sm text-zinc-600 dark:text-zinc-400">
+            Draft — no content yet. Create a page at <code
+                >src/pages/projects/{slug}.md</code
+            > or <code>src/pages/projects/{slug}.astro</code> to replace this placeholder.
+        </p>
+
+        <section class="mt-6">
+            <h3>Overview</h3>
+            <p>Add project description, links, and details here.</p>
+        </section>
+    </div>
+</Layout>

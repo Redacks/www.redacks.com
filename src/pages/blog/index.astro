@@ -1,0 +1,29 @@
+---
+import Layout from "../../Layout.astro";
+import BlogPostGrid from "../../components/blog/BlogPostGrid.astro";
+import SectionTitle from "../../components/SectionTitle.astro";
+import Button from "../../components/Button.astro";
+import { Icon } from "astro-icon/components";
+
+const data = {
+    heading: "Blog",
+    backLink: { label: "Back To Home", href: "/" },
+};
+---
+
+<Layout
+    title="Redacks | Blog"
+    description="My blog, where I share insights, tutorials, and updates about my projects and software development journey."
+    keywords={["redacks", "niklas", "ahlers", "student", "software", "blog"]}
+>
+    <div class="mx-auto max-w-300 px-8 md:py-32 py-8">
+        <div class="mb-10 flex items-center gap-4">
+            <Button href={data.backLink.href} variant="secondary">
+                <Icon name="lucide:arrow-left" class="h-4 w-4" />
+                {data.backLink.label}
+            </Button>
+        </div>
+        <SectionTitle heading={data.heading} />
+        <BlogPostGrid showOnlyFeatured />
+    </div>
+</Layout>

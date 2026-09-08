@@ -1,0 +1,67 @@
+---
+import { getCollection } from "astro:content";
+import Card from "../Card.astro";
+import { Icon } from "astro-icon/components";
+
+export interface Props {
+    showOnlyFeatured?: boolean;
+}
+
+const { showOnlyFeatured = false }: Props = Astro.props;
+
+let projects = await getCollection("projects");
+
+if (showOnlyFeatured) {
+    projects = projects.filter((project) => project.data.featured).slice(0, 6);
+} else {
+    projects = projects.slice(0, 6);
+}
+
+const minCards = 3;
+const placeholdersNeeded = Math.max(0, minCards - projects.length);
+---
+
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+    {
+        projects.map((project) => (
+            <Card href={`/projects/${project.id}`} cursorPointer>
+                <div class="mb-6">
+                    <h3 class="mb-4 font-h3 text-xl leading-tight text-white transition-colors group-hover:text-primary">
+                        {project.data.title}
+                    </h3>
+                    <p class="font-sans text-sm text-white/55">
+                        {project.data.description}
+                    </p>
+                </div>
+                <div class="flex items-center justify-between border-t border-white/10 pt-4">
+                    <span class="font-label-caps text-[12px] tracking-widest text-white/40">
+                        {project.data.tags.join(", ")}
+                    </span>
+                    <Icon
+                        name="lucide:arrow-right"
+                        class="h-5 w-5 text-primary"
+                    />
+                </div>
+            </Card>
+        ))
+    }
+
+    {
+        Array.from({ length: placeholdersNeeded }).map((_, i) => (
+            <Card key={`placeholder-project-${i}`}>
+                <div class="mb-6">
+                    <h3 class="mb-4 font-h3 text-xl leading-tight text-white/55">
+                        Coming soon
+                    </h3>
+                    <p class="font-sans text-sm text-white/35">
+                        A new project will appear here.
+                    </p>
+                </div>
+                <div class="flex items-center justify-between border-t border-white/10 pt-4">
+                    <span class="font-label-caps text-[12px] tracking-widest text-white/30">—</span>
+                    <Icon name="lucide:clock" class="h-5 w-5 text-white/30" />
+                </div>
+            </Card>
+        ))
+    }
+</div>

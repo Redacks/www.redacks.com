@@ -1,0 +1,67 @@
+---
+import { getCollection } from "astro:content";
+import Card from "../Card.astro";
+
+import { Icon } from "astro-icon/components";
+export interface Props {
+    showOnlyFeatured?: boolean;
+}
+
+const { showOnlyFeatured } = Astro.props;
+
+let blogPosts = await getCollection("blog");
+
+if (showOnlyFeatured) {
+    blogPosts = blogPosts.filter((post) => post.data.featured).slice(0, 6);
+} else {
+    blogPosts = blogPosts.slice(0, 6);
+}
+
+const minCards = 3;
+const placeholdersNeeded = Math.max(0, minCards - blogPosts.length);
+---
+
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+    {
+        blogPosts.map((post) => (
+            <Card href={`/blog/${post.id}`} cursorPointer>
+                <div class="mb-6">
+                    <h3 class="mb-4 font-h3 text-xl leading-tight text-white transition-colors group-hover:text-primary">
+                        {post.data.title}
+                    </h3>
+                    <p class="font-sans text-sm text-white/55">
+                        {post.data.description}
+                    </p>
+                </div>
+                <div class="flex items-center justify-between border-t border-white/10 pt-4">
+                    <span class="font-label-caps text-xs tracking-widest text-white/40">
+                        {post.data.tags?.join(", ")}
+                    </span>
+                    <Icon
+                        name="lucide:arrow-right"
+                        class="h-5 w-5 text-primary"
+                    />
+                </div>
+            </Card>
+        ))
+    }
+
+    {
+        Array.from({ length: placeholdersNeeded }).map((_, i) => (
+            <Card key={`placeholder-${i}`}>
+                <div class="mb-6">
+                    <h3 class="mb-4 font-h3 text-xl leading-tight text-white/55">
+                        Coming soon
+                    </h3>
+                    <p class="font-sans text-sm text-white/35">
+                        New posts will appear here.
+                    </p>
+                </div>
+                <div class="flex items-center justify-between border-t border-white/10 pt-4">
+                    <span class="font-label-caps text-xs tracking-widest text-white/30">—</span>
+                    <Icon name="lucide:clock" class="h-5 w-5 text-white/30" />
+                </div>
+            </Card>
+        ))
+    }
+</div>
