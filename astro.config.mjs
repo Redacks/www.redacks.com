@@ -7,12 +7,16 @@ import sitemap from '@astrojs/sitemap';
 
 import icon from 'astro-icon';
 
+import cloudflare from '@astrojs/cloudflare';
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://www.redacks.com",
+
   vite: {
     plugins: [tailwindcss()]
   },
 
-  integrations: [sitemap(), icon()]
+  integrations: [sitemap(), icon()],
+  adapter: cloudflare(),
 });

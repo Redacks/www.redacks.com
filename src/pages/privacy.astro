@@ -16,7 +16,11 @@ const data = {
     title="Redacks | Privacy & Imprint"
     description="Privacy Policy and Imprint for redacks.com according to GDPR, BDSG, TDDDG, and DDG."
 >
-    <div class="mx-auto max-w-300 px-8 md:py-32 py-8">
+    <div
+        id="legal-wrapper"
+        data-lang="en"
+        class="mx-auto max-w-300 px-8 md:py-32 py-8 group"
+    >
         <div class="mb-10 flex flex-wrap items-center justify-between gap-4">
             <Button href={data.backLink.href} variant="secondary">
                 <Icon name="lucide:arrow-left" class="h-4 w-4" />
@@ -33,7 +37,7 @@ const data = {
 
         <SectionTitle heading={data.heading} />
 
-        <div id="content-en" class="flex flex-col gap-12">
+        <div class="hidden group-data-[lang=en]:flex! flex-col gap-12">
             <div>
                 <SubSectionTitle heading="1. Responsible Person (Imprint)" />
                 <Card hoverGlow={false}>
@@ -239,7 +243,7 @@ const data = {
             </div>
         </div>
 
-        <div id="content-de" class="hidden flex flex-col gap-12">
+        <div class="hidden group-data-[lang=de]:flex! flex-col gap-12">
             <div>
                 <SubSectionTitle
                     heading="1. Verantwortliche Person (Impressum)"
@@ -455,25 +459,23 @@ const data = {
 </Layout>
 
 <script>
+    const wrapper = document.getElementById("legal-wrapper");
     const toggleBtn = document.getElementById("lang-toggle");
     const langLabel = document.getElementById("lang-label");
-    const enContent = document.getElementById("content-en");
-    const deContent = document.getElementById("content-de");
-    let currentLang = "en";
 
     toggleBtn?.addEventListener("click", () => {
-        if (currentLang === "en") {
-            currentLang = "de";
-            enContent?.classList.add("hidden");
-            deContent?.classList.remove("hidden");
-            langLabel!.textContent = "Switch to English (EN)";
-        } else {
-            currentLang = "en";
-            deContent?.classList.add("hidden");
-            enContent?.classList.remove("hidden");
-            langLabel!.textContent = "Switch to German (DE)";
+        const currentLang = wrapper?.getAttribute("data-lang");
+        const newLang = currentLang === "en" ? "de" : "en";
+
+        wrapper?.setAttribute("data-lang", newLang);
+
+        if (langLabel) {
+            langLabel.textContent =
+                newLang === "en"
+                    ? "Switch to German (DE)"
+                    : "Switch to English (EN)";
         }
-        // Scroll to top when switching
+
         window.scrollTo({ top: 0, behavior: "smooth" });
     });
 </script>
