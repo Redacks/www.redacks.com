@@ -1,0 +1,87 @@
+---
+interface Props {
+    sectionIds: string[];
+}
+
+const { sectionIds } = Astro.props;
+---
+
+<div
+    class="fixed right-5 top-1/2 z-40 hidden -translate-y-1/2 md:flex"
+    data-ids={JSON.stringify(sectionIds)}
+    id="scroll-nav-container"
+>
+    <div
+        class="flex flex-col items-center gap-3 rounded-full border border-white/15 bg-black/45 px-2 py-3 backdrop-blur-md"
+    >
+        <button
+            type="button"
+            id="scroll-up"
+            class="h-8 w-8 rounded-full border border-white/20 text-sm text-white/70 transition hover:border-white/50 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed"
+            aria-label="Scroll up"
+        >
+            ↑
+        </button>
+        <span class="h-10 w-px bg-white/20"></span>
+        <button
+            type="button"
+            id="scroll-down"
+            class="h-8 w-8 rounded-full border border-white/20 text-sm text-white/70 transition hover:border-white/50 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed"
+            aria-label="Scroll down"
+        >
+            ↓
+        </button>
+    </div>
+</div>
+
+<script>
+    const container = document.getElementById("scroll-nav-container");
+    const upBtn = document.getElementById("scroll-up") as HTMLButtonElement;
+    const downBtn = document.getElementById("scroll-down") as HTMLButtonElement;
+
+    if (container && upBtn && downBtn) {
+        const ids: string[] = JSON.parse(container.dataset.ids || "[]");
+
+        const getSections = () => {
+            return ids
+                .map((id) => document.getElementById(id))
+                .filter((el): el is HTMLElement => el !== null);
+        };
+
+        const scrollToSection = (direction: "up" | "down") => {
+            const sections = getSections();
+            const scrollPos = window.scrollY;
+            const threshold = 10;
+
+            if (direction === "down") {
+                const next = sections.find(
+                    (section) => section.offsetTop > scrollPos + threshold,
+                );
+                if (next) next.scrollIntoView({ behavior: "smooth" });
+            } else {
+                const prev = sections
+                    .filter(
+                        (section) => section.offsetTop < scrollPos - threshold,
+                    )
+                    .pop();
+                if (prev) prev.scrollIntoView({ behavior: "smooth" });
+            }
+        };
+
+        upBtn.addEventListener("click", () => scrollToSection("up"));
+        downBtn.addEventListener("click", () => scrollToSection("down"));
+
+        const updateButtons = () => {
+            const scrollPos = window.scrollY;
+            const maxScroll =
+                document.documentElement.scrollHeight - window.innerHeight;
+
+            upBtn.disabled = scrollPos <= 10;
+            downBtn.disabled = scrollPos >= maxScroll - 10;
+        };
+
+        window.addEventListener("scroll", updateButtons, { passive: true });
+        window.addEventListener("resize", updateButtons);
+        updateButtons();
+    }
+</script>
