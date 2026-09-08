@@ -1,0 +1,22 @@
+---
+export interface Props {
+    hoverGlow?: boolean;
+    cursorPointer?: boolean;
+    href?: string;
+}
+
+const { hoverGlow = true, cursorPointer = false, href } = Astro.props;
+
+const Tag = href ? "a" : "div";
+const classes = `group block h-full border border-white/5 bg-white/2 p-8 text-left backdrop-blur-[20px] transition-colors duration-500 ${
+    hoverGlow ? "hover:border-primary/40" : "border-white/5"
+} ${cursorPointer ? "cursor-pointer" : ""}`;
+---
+
+{
+    (
+        <Tag href={href} class={classes}>
+            <slot />
+        </Tag>
+    )
+}

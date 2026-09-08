@@ -1,0 +1,479 @@
+---
+import Layout from "../Layout.astro";
+import SectionTitle from "../components/SectionTitle.astro";
+import Button from "../components/Button.astro";
+import { Icon } from "astro-icon/components";
+import SubSectionTitle from "../components/SubSectionTitle.astro";
+import Card from "../components/Card.astro";
+
+const data = {
+    heading: "Legal Information",
+    backLink: { label: "Back To Home", href: "/" },
+};
+---
+
+<Layout
+    title="Redacks | Privacy & Imprint"
+    description="Privacy Policy and Imprint for redacks.com according to GDPR, BDSG, TDDDG, and DDG."
+>
+    <div class="mx-auto max-w-300 px-8 md:py-32 py-8">
+        <div class="mb-10 flex flex-wrap items-center justify-between gap-4">
+            <Button href={data.backLink.href} variant="secondary">
+                <Icon name="lucide:arrow-left" class="h-4 w-4" />
+                {data.backLink.label}
+            </Button>
+            <button
+                id="lang-toggle"
+                class="inline-flex items-center gap-4 px-8 py-5 font-label-caps text-xs tracking-widest transition-all duration-300 uppercase border border-white/10 bg-transparent text-white hover:bg-white/5"
+            >
+                <Icon name="lucide:languages" class="h-4 w-4" />
+                <span id="lang-label">Switch to German (DE)</span>
+            </button>
+        </div>
+
+        <SectionTitle heading={data.heading} />
+
+        <div id="content-en" class="flex flex-col gap-12">
+            <div>
+                <SubSectionTitle heading="1. Responsible Person (Imprint)" />
+                <Card hoverGlow={false}>
+                    <div
+                        class="flex flex-col md:flex-row md:items-center justify-between gap-8"
+                    >
+                        <div class="flex-1">
+                            <p
+                                class="font-h3 text-xl leading-snug text-white md:text-2xl"
+                            >
+                                Niklas Ahlers<br />
+                                Kalkofenstraße 15a<br />
+                                86438 Kissing, Germany<br />
+                                <span class="text-lg text-white/80"
+                                    >Phone: +49 (0) 8233 2483723</span
+                                >
+                            </p>
+                        </div>
+                        <div
+                            class="flex flex-col w-full md:w-auto md:items-end gap-3"
+                        >
+                            <Button
+                                href={`mailto:admin@redacks.com`}
+                                variant="primary"
+                            >
+                                <span
+                                    class="font-h3 text-lg text-white md:text-xl"
+                                    >admin@redacks.com</span
+                                >
+                            </Button>
+                            <p
+                                class="text-[10px] text-white/30 italic md:text-right max-w-87.5 leading-relaxed"
+                            >
+                                <strong>Note:</strong> Your message will be processed
+                                via Google (USA). For more details, please see Section
+                                6.
+                            </p>
+                        </div>
+                    </div>
+                    <p
+                        class="mt-8 pt-6 border-t border-white/5 font-sans text-sm text-white/55 italic"
+                    >
+                        Note: The appointment of a Data Protection Officer is
+                        not required under Art. 37 GDPR in conjunction with § 38
+                        BDSG for this website.
+                    </p>
+                </Card>
+            </div>
+
+            <div>
+                <SubSectionTitle heading="2. Introduction" />
+                <Card hoverGlow={false}>
+                    <p class="font-sans text-sm text-white/80 leading-relaxed">
+                        Revision: Sept 06, 2026<br /><br />
+                        This privacy policy informs you about the processing of personal
+                        data in accordance with <strong
+                            >Art. 13 and 14 GDPR</strong
+                        >, the <strong>German BDSG</strong>, <strong
+                            >TDDDG</strong
+                        >, and the <strong>DDG</strong>. I am committed to
+                        collecting only the data necessary to provide services
+                        and respond to inquiries.
+                    </p>
+                </Card>
+            </div>
+
+            <div>
+                <SubSectionTitle heading="3. Cookie Notice (TDDDG)" />
+                <Card hoverGlow={false}>
+                    <div
+                        class="space-y-4 font-sans text-white/80 leading-relaxed text-sm"
+                    >
+                        <p>
+                            This website does <strong>not</strong> use tracking or
+                            marketing cookies. As part of operating via Cloudflare,
+                            <strong> technically necessary cookies</strong> (for example,
+                            for security functions like DDoS protection) are set.
+                        </p>
+                        <p>
+                            These fall under the exemption of <strong
+                                >§ 25(2) No. 2 TDDDG</strong
+                            > and do not require separate consent as they are strictly
+                            necessary for the operation and security of the service.
+                        </p>
+                    </div>
+                </Card>
+            </div>
+
+            <div>
+                <SubSectionTitle heading="4. Data Collection & Security" />
+                <Card hoverGlow={false}>
+                    <ul
+                        class="list-disc pl-5 font-sans text-sm text-white/80 space-y-2"
+                    >
+                        <li>
+                            <strong>IP Address:</strong> Processed via Cloudflare
+                            for security purposes and service delivery.
+                        </li>
+                        <li>
+                            <strong>Communication Data:</strong> Email address, message
+                            content, and timestamps are processed when you contact
+                            me voluntarily.
+                        </li>
+                    </ul>
+                </Card>
+            </div>
+
+            <div>
+                <SubSectionTitle heading="5. Hosting Provider" />
+                <Card hoverGlow={false}>
+                    <p class="font-sans text-sm text-white/80 leading-relaxed">
+                        This website is primarily operated via the
+                        infrastructure of <strong>Cloudflare, Inc.</strong> (USA).<br
+                        /><br />
+                        <strong>Legal Basis:</strong> Art. 6(1)(f) GDPR (Legitimate
+                        interests). Cloudflare is certified under the <strong
+                            >EU-US Data Privacy Framework</strong
+                        >, ensuring an adequate level of data protection
+                        according to Art. 45 GDPR.
+                    </p>
+                    <div class="mt-4">
+                        <Button
+                            href="https://www.cloudflare.com/privacypolicy/"
+                            variant="secondary">View Cloudflare Policy</Button
+                        >
+                    </div>
+                </Card>
+            </div>
+
+            <div>
+                <SubSectionTitle
+                    heading="6. Email Infrastructure & Management"
+                />
+                <div class="flex flex-col gap-4">
+                    <Card hoverGlow={false}>
+                        <h4 class="font-bold text-white text-sm mb-2">
+                            Cloudflare, Inc. (Email Routing)
+                        </h4>
+                        <p class="font-sans text-sm text-white/80 mb-4">
+                            Incoming emails are initially received and forwarded
+                            via Cloudflare Email Routing. According to
+                            Cloudflare, the content of the emails is processed
+                            solely for delivery purposes and is not stored
+                            permanently.
+                        </p>
+                        <Button
+                            href="https://www.cloudflare.com/privacypolicy/"
+                            variant="secondary">View Cloudflare Policy</Button
+                        >
+                    </Card>
+                    <Card hoverGlow={false}>
+                        <h4 class="font-bold text-white text-sm mb-2">
+                            Google LLC (Gmail Storage)
+                        </h4>
+                        <p class="font-sans text-sm text-white/80 mb-4">
+                            After routing, emails are stored via Google Gmail
+                            (USA). Google is certified under the <strong
+                                >EU-US Data Privacy Framework</strong
+                            > (Art. 45 GDPR).
+                        </p>
+                        <Button
+                            href="https://policies.google.com/privacy"
+                            variant="secondary">View Google Policy</Button
+                        >
+                    </Card>
+                    <Card hoverGlow={false}>
+                        <h4 class="font-bold text-white text-sm mb-2">
+                            Brevo SA (Outgoing)
+                        </h4>
+                        <p class="font-sans text-sm text-white/80 mb-4">
+                            Responses are sent via Brevo SA (France). Tracking
+                            is disabled. A DPA per Art. 28 GDPR is in place.
+                        </p>
+                        <Button
+                            href="https://www.brevo.com/legal/privacypolicy/"
+                            variant="secondary">View Brevo Policy</Button
+                        >
+                    </Card>
+                </div>
+            </div>
+
+            <div>
+                <SubSectionTitle heading="7. Your Rights & Data Deletion" />
+                <Card hoverGlow={false}>
+                    <p class="font-sans text-sm text-white/80 leading-relaxed">
+                        Under the GDPR, you have the right to Access (Art. 15),
+                        Rectification (Art. 16), Erasure (Art. 17), <strong
+                            >Restriction of Processing (Art. 18)</strong
+                        >, <strong>Data Portability (Art. 20)</strong>, and the <strong
+                            >Right to Object (Art. 21 GDPR)</strong
+                        >. You may also withdraw any previously given consent
+                        (Art. 7 GDPR) at any time.
+                        <br /><br />
+                        Furthermore, you have the right to lodge a complaint with
+                        a supervisory authority in accordance with <strong
+                            >Art. 77 GDPR</strong
+                        > (e.g., the <em
+                            >Bayerisches Landesamt für Datenschutzaufsicht -
+                            BayLDA</em
+                        >).
+                    </p>
+                </Card>
+            </div>
+        </div>
+
+        <div id="content-de" class="hidden flex flex-col gap-12">
+            <div>
+                <SubSectionTitle
+                    heading="1. Verantwortliche Person (Impressum)"
+                />
+                <Card hoverGlow={false}>
+                    <div
+                        class="flex flex-col md:flex-row md:items-center justify-between gap-8"
+                    >
+                        <div class="flex-1">
+                            <p
+                                class="font-h3 text-xl leading-snug text-white md:text-2xl"
+                            >
+                                Niklas Ahlers<br />
+                                Kalkofenstraße 15a<br />
+                                86438 Kissing, Deutschland<br />
+                                <span class="text-lg text-white/80"
+                                    >Telefon: +49 (0) 8233 2483723</span
+                                >
+                            </p>
+                        </div>
+                        <div
+                            class="flex flex-col w-full md:w-auto md:items-end gap-3"
+                        >
+                            <Button
+                                href={`mailto:admin@redacks.com`}
+                                variant="primary"
+                            >
+                                <span
+                                    class="font-h3 text-lg text-white md:text-xl"
+                                    >admin@redacks.com</span
+                                >
+                            </Button>
+                            <p
+                                class="text-[10px] text-white/30 italic md:text-right max-w-87.5 leading-relaxed"
+                            >
+                                <strong>Hinweis:</strong> Ihre Nachricht wird über
+                                Google (USA) verarbeitet. Weitere Details finden Sie
+                                in Abschnitt 6 dieser Erklärung.
+                            </p>
+                        </div>
+                    </div>
+                    <p
+                        class="mt-8 pt-6 border-t border-white/5 font-sans text-sm text-white/55 italic"
+                    >
+                        Hinweis: Die Bestellung eines Datenschutzbeauftragten
+                        ist gemäß Art. 37 DSGVO in Verbindung mit § 38 BDSG für
+                        diese Website nicht erforderlich.
+                    </p>
+                </Card>
+            </div>
+
+            <div>
+                <SubSectionTitle heading="2. Einleitung" />
+                <Card hoverGlow={false}>
+                    <p class="font-sans text-sm text-white/80 leading-relaxed">
+                        Stand: 06. Sept 2026<br /><br />
+                        Diese Datenschutzerklärung informiert Sie über die Verarbeitung
+                        personenbezogener Daten gemäß <strong
+                            >Art. 13 und 14 DSGVO</strong
+                        >, dem <strong>BDSG</strong>, dem <strong>TDDDG</strong> und
+                        dem <strong>DDG</strong>. Ich verpflichte mich, nur die
+                        Daten zu erheben, die für die Erbringung von Diensten
+                        und die Beantwortung von Anfragen erforderlich sind.
+                    </p>
+                </Card>
+            </div>
+
+            <div>
+                <SubSectionTitle heading="3. Cookie-Hinweis (TDDDG)" />
+                <Card hoverGlow={false}>
+                    <div
+                        class="space-y-4 font-sans text-white/80 leading-relaxed text-sm"
+                    >
+                        <p>
+                            Diese Website verwendet <strong>keine</strong> Tracking-
+                            oder Marketing-Cookies. Im Rahmen des Betriebs über Cloudflare
+                            werden <strong>technisch notwendige Cookies</strong> (zum
+                            Beispiel für Sicherheitsfunktionen wie den DDoS-Schutz)
+                            gesetzt.
+                        </p>
+                        <p>
+                            Diese fallen unter die Ausnahme von <strong
+                                >§ 25 Abs. 2 Nr. 2 TDDDG</strong
+                            > und erfordern keine separate Einwilligung, da sie für
+                            den Betrieb und die Sicherheit des Dienstes unbedingt
+                            erforderlich sind.
+                        </p>
+                    </div>
+                </Card>
+            </div>
+
+            <div>
+                <SubSectionTitle heading="4. Datenerhebung & Sicherheit" />
+                <Card hoverGlow={false}>
+                    <ul
+                        class="list-disc pl-5 font-sans text-sm text-white/80 space-y-2"
+                    >
+                        <li>
+                            <strong>IP-Adresse:</strong> Wird über Cloudflare zu Sicherheitszwecken
+                            und zur Bereitstellung des Dienstes verarbeitet.
+                        </li>
+                        <li>
+                            <strong>Kommunikationsdaten:</strong> E-Mail-Adresse,
+                            Nachrichteninhalt und Zeitstempel werden verarbeitet,
+                            wenn Sie mich freiwillig kontaktieren.
+                        </li>
+                    </ul>
+                </Card>
+            </div>
+
+            <div>
+                <SubSectionTitle heading="5. Hosting-Anbieter" />
+                <Card hoverGlow={false}>
+                    <p class="font-sans text-sm text-white/80 leading-relaxed">
+                        Diese Website wird primär über die Infrastruktur von <strong
+                            >Cloudflare, Inc.</strong
+                        > (USA) betrieben.<br /><br />
+                        <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO
+                        (Berechtigte Interessen). Cloudflare ist nach dem <strong
+                            >EU-US Data Privacy Framework</strong
+                        > zertifiziert, was ein angemessenes Datenschutzniveau gemäß
+                        Art. 45 DSGVO gewährleistet.
+                    </p>
+                    <div class="mt-4">
+                        <Button
+                            href="https://www.cloudflare.com/privacypolicy/"
+                            variant="secondary"
+                            >Cloudflare-Richtlinie ansehen</Button
+                        >
+                    </div>
+                </Card>
+            </div>
+
+            <div>
+                <SubSectionTitle
+                    heading="6. E-Mail-Infrastruktur & Verwaltung"
+                />
+                <div class="flex flex-col gap-4">
+                    <Card hoverGlow={false}>
+                        <h4 class="font-bold text-white text-sm mb-2">
+                            Cloudflare, Inc. (Email Routing)
+                        </h4>
+                        <p class="font-sans text-sm text-white/80 mb-4">
+                            Eingehende E-Mails werden zunächst über Cloudflare
+                            Email Routing empfangen und weitergeleitet. Laut
+                            Cloudflare wird der Inhalt der E-Mails nur zum Zweck
+                            der Zustellung verarbeitet und nicht dauerhaft
+                            gespeichert.
+                        </p>
+                        <Button
+                            href="https://www.cloudflare.com/privacypolicy/"
+                            variant="secondary"
+                            >Cloudflare-Richtlinie ansehen</Button
+                        >
+                    </Card>
+                    <Card hoverGlow={false}>
+                        <h4 class="font-bold text-white text-sm mb-2">
+                            Google LLC (Gmail Speicher)
+                        </h4>
+                        <p class="font-sans text-sm text-white/80 mb-4">
+                            Nach der Weiterleitung werden E-Mails über Google
+                            Gmail (USA) gespeichert. Google ist nach dem <strong
+                                >EU-US Data Privacy Framework</strong
+                            > zertifiziert (Art. 45 DSGVO).
+                        </p>
+                        <Button
+                            href="https://policies.google.com/privacy"
+                            variant="secondary"
+                            >Google-Richtlinie ansehen</Button
+                        >
+                    </Card>
+                    <Card hoverGlow={false}>
+                        <h4 class="font-bold text-white text-sm mb-2">
+                            Brevo SA (Versand)
+                        </h4>
+                        <p class="font-sans text-sm text-white/80 mb-4">
+                            Antworten werden über Brevo SA (Frankreich)
+                            versendet. Tracking ist deaktiviert. Ein AVV gemäß
+                            Art. 28 DSGVO liegt vor.
+                        </p>
+                        <Button
+                            href="https://www.brevo.com/legal/privacypolicy/"
+                            variant="secondary">Brevo-Richtlinie ansehen</Button
+                        >
+                    </Card>
+                </div>
+            </div>
+
+            <div>
+                <SubSectionTitle heading="7. Ihre Rechte & Löschung" />
+                <Card hoverGlow={false}>
+                    <p class="font-sans text-sm text-white/80 leading-relaxed">
+                        Sie haben das Recht auf Auskunft (Art. 15), Berichtigung
+                        (Art. 16), Löschung (Art. 17), <strong
+                            >Einschränkung der Verarbeitung (Art. 18)</strong
+                        >, <strong>Datenübertragbarkeit (Art. 20)</strong> und das
+                        <strong>Widerspruchsrecht (Art. 21 DSGVO)</strong>. Sie
+                        können eine zuvor erteilte Einwilligung (Art. 7 DSGVO)
+                        jederzeit widerrufen.
+                        <br /><br />
+                        Darüber hinaus haben Sie gemäß <strong
+                            >Art. 77 DSGVO</strong
+                        > das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu
+                        beschweren (z. B. beim <em
+                            >Bayerischen Landesamt für Datenschutzaufsicht -
+                            BayLDA</em
+                        >).
+                    </p>
+                </Card>
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<script>
+    const toggleBtn = document.getElementById("lang-toggle");
+    const langLabel = document.getElementById("lang-label");
+    const enContent = document.getElementById("content-en");
+    const deContent = document.getElementById("content-de");
+    let currentLang = "en";
+
+    toggleBtn?.addEventListener("click", () => {
+        if (currentLang === "en") {
+            currentLang = "de";
+            enContent?.classList.add("hidden");
+            deContent?.classList.remove("hidden");
+            langLabel!.textContent = "Switch to English (EN)";
+        } else {
+            currentLang = "en";
+            deContent?.classList.add("hidden");
+            enContent?.classList.remove("hidden");
+            langLabel!.textContent = "Switch to German (DE)";
+        }
+        // Scroll to top when switching
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+</script>
